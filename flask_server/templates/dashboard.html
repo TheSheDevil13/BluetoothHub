@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32 Temperature Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin: auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>All Temperature Readings</h2>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>Temperature (°C)</th>
+        </tr>
+        {% for entry in data %}
+        <tr>
+            <td>{{ entry.timestamp }}</td>
+            <td>{{ entry.temperature }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
