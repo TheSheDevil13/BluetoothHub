@@ -1,0 +1,63 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Arduino & ESP32
+.pio/
+.pioenvs/
+.piolibdeps/
+.clang_complete
+.gcc-flags.json
+.cache/
+
+# Build files
+build/
+out/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Compiled binaries
+*.bin
+*.elf
+*.hex
+*.map
+
+# Private configuration
+secrets.h
+credentials.h
+wifi_credentials.h
+
+# Logs and databases
+*.log
+*.sqlite 
