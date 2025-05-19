@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ESP32 Temperature Dashboard</title>
+    <title>ESP32 Sensor Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 30px;
             background-color: #f8f9fa;
         }
-        h2 {
+        h2, h3 {
             text-align: center;
+            color: #333;
+        }
+        .sensor-section {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        .sensor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .sensor-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         table {
-            width: 60%;
-            margin: auto;
+            width: 100%;
             border-collapse: collapse;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background-color: white;
+            margin-top: 10px;
         }
         th, td {
             padding: 12px;
@@ -27,21 +43,92 @@
             background-color: #007BFF;
             color: white;
         }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .device-header {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
-    <h2>All Temperature Readings</h2>
-    <table>
-        <tr>
-            <th>Timestamp</th>
-            <th>Temperature (°C)</th>
-        </tr>
-        {% for entry in data %}
-        <tr>
-            <td>{{ entry.timestamp }}</td>
-            <td>{{ entry.temperature }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h2>ESP32 Sensor Dashboard</h2>
+    
+    <div class="sensor-section">
+        <div class="device-header">Transmitter 1</div>
+        <div class="sensor-grid">
+            <div class="sensor-box">
+                <h3>Temperature</h3>
+                <table>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Value (°C)</th>
+                    </tr>
+                    {% for entry in data.transmitter1.temperature %}
+                    <tr>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>{{ entry.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="sensor-box">
+                <h3>Humidity</h3>
+                <table>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Value (%)</th>
+                    </tr>
+                    {% for entry in data.transmitter1.humidity %}
+                    <tr>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>{{ entry.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="sensor-section">
+        <div class="device-header">Transmitter 2</div>
+        <div class="sensor-grid">
+            <div class="sensor-box">
+                <h3>Temperature</h3>
+                <table>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Value (°C)</th>
+                    </tr>
+                    {% for entry in data.transmitter2.temperature %}
+                    <tr>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>{{ entry.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="sensor-box">
+                <h3>Humidity</h3>
+                <table>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Value (%)</th>
+                    </tr>
+                    {% for entry in data.transmitter2.humidity %}
+                    <tr>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>{{ entry.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
